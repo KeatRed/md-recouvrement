@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto; // ✅ on autorise scroll vertical
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+
+
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // ✅ autorise la page à dépasser le viewport
+  height: auto; // ✅ important !
+}
+
+.main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+app-sticky-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 999;
+}
+
+app-footer {
+  flex-shrink: 0;
+}
+
+body.modal-open {
+  overflow: hidden;
+
+  .navbar,
+  app-footer,
+  app-sticky-footer {
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+    filter: blur(1px); // facultatif : pour montrer que c’est inactif
+  }
+  app-root {
+    transition: filter 0.3s ease;
+  }
+}
+

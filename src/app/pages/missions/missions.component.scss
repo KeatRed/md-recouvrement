@@ -1,0 +1,173 @@
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    // ✅ rend la grid fluide
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      min-height: 360px;
+      position: relative;
+      overflow: hidden;
+    
+      border: 2px solid #00435e;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+      &:hover {
+        transform: scale(1.05);
+      }
+    
+      // Overlay sombre pour lisibilité du texte
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+      }
+    
+      .card-top,
+      .card-bottom {
+        position: relative;
+        z-index: 1;
+        padding: 1rem;
+      }
+    
+      h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    
+      p {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        font-weight: 400;
+      }
+    }
+    
+    
+  }
+  
+  .form-popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  
+    &__content {
+      background: #fff;
+      max-width: 750px;
+      max-height: 90vh;
+      width: 90%;
+      display: flex;
+      flex-direction: column; // stack content vertically
+      border-radius: 12px;
+      overflow-y: auto; // ✅ enable scroll when needed
+      overflow-x: hidden;
+    }
+  
+    &__left, &__right {
+      padding: 1.5rem;
+    }
+  
+    &__left {
+      border-bottom: 1px solid #eee;
+    }
+  
+    &__right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+  
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+  
+      input, textarea {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+  
+      textarea {
+        resize: vertical;
+      }
+  
+      .form-buttons {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 1rem;
+  
+        button {
+          padding: 0.5rem 1rem;
+          border: none;
+          border-radius: 5px;
+          font-weight: bold;
+          font-size: 0.9rem;
+          cursor: pointer;
+  
+          &:first-child {
+            background: #33a0ad;
+            color: white;
+          }
+  
+          &.close {
+            background: #666368;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .form-popup__content {
+      max-height: 90vh;
+      padding: 1rem;
+    }
+  
+    .form-popup__left, .form-popup__right {
+      padding: 1rem;
+    }
+  
+    form input, form textarea {
+      font-size: 0.8rem;
+    }
+  
+    .form-buttons button {
+      font-size: 0.8rem;
+    }
+  }
+  
+  
+  

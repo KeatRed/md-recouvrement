@@ -1,0 +1,72 @@
+.sticky-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 999;
+    background: #f9f9f9;
+    border-top: 1px solid #ccc;
+    width: 100vw;   
+    padding: 0.4rem;
+    box-sizing: border-box;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: nowrap;
+  
+    .btn {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 100%;
+  
+      // 📏 Padding & Font-size réduits dynamiquement
+      padding: clamp(0.3rem, 1vw, 0.6rem) clamp(0.6rem, 2vw, 1rem);
+      font-size: clamp(0.6rem, 2vw, 0.9rem);
+  
+      font-weight: 600;
+      border-radius: 4px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      white-space: nowrap;
+      box-sizing: border-box;
+      line-height: 1.2;
+    }
+  
+    .btn-blue  { background-color: #00435e; }
+    .btn-grey  { background-color: #666368; }
+    .btn-cyan  { background-color: #33a0ad; }
+  }
+  @media (max-width: 500px) {
+    .sticky-footer {
+      flex-wrap: nowrap; // toujours horizontal
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+  
+      .btn {
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: 100%;
+  
+        padding: 0.25rem 0.2rem;     // 🔽 encore plus fin
+        font-size: 0.45rem;           // 🔽 plus petit mais toujours lisible
+        line-height: 1.1;
+      }
+    }
+  }
+  @media (max-width: 390px) {
+    .sticky-footer {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: stretch;
+    
+        .btn {
+          width: 100%;
+          font-size: 0.75rem;
+          padding: 0.4rem 0.6rem;
+        }
+      }
+  }
+  
+  
