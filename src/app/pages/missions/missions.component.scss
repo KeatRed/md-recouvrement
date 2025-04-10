@@ -10,39 +10,37 @@
     box-sizing: border-box;
     .card {
       display: flex;
+      
       flex-direction: column;
       justify-content: space-between;
       height: 100%;
       min-height: 360px;
       position: relative;
       overflow: hidden;
-    
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
       border: 2px solid #00435e;
       border-radius: 12px;
       background-size: cover;
       background-position: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      cursor: pointer;
+      
       color: #fff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
+      // Optimisations pour les performances
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      
+      // Transition optimisée
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+
+      
       &:hover {
-        transform: scale(1.05);
-      }
-    
-      // Overlay sombre pour lisibilité du texte
-      &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 0;
+        transform: scale(1.02); // Réduction de l'échelle pour une animation plus fluide
       }
     
       .card-top,
       .card-bottom {
         position: relative;
-        z-index: 1;
         padding: 1rem;
       }
     
@@ -50,6 +48,10 @@
         font-family: 'Poppins', sans-serif;
         font-size: 1.2rem;
         font-weight: 600;
+        text-align: center;
+        color: #fff;
+        // Optimisation du text-shadow
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.7));
       }
     
       p {
@@ -59,7 +61,13 @@
         font-weight: 400;
       }
     }
-    
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+      z-index: 0;
+    }
     
   }
   

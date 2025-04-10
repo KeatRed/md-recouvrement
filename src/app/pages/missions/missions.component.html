@@ -1,9 +1,10 @@
 <section class="missions-grid">
-    <div class="card" *ngFor="let item of missions" 
-    [style.backgroundImage]="'url(' + item.background + ')'"
-    (click)="openForm(item)">
+  <div class="card" 
+  *ngFor="let item of missions" 
+  [style.backgroundImage]="'url(' + item.background + ')'"
+  (click)="openForm(item)">
     <div class="card-top">
-      <div class="icon"><i [class]="item.icon"></i></div>
+      
       <h3>{{ item.title }}</h3>
     </div>
       <div class="card-bottom">
@@ -12,29 +13,4 @@
     </div>
   </section>
   
-  <!-- Formulaire Modal -->
-  <div class="form-popup" *ngIf="selectedMission">
-    <div class="form-popup__content">
-      <div class="form-popup__left">
-        <h2>{{ selectedMission.title }}</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed metus vitae.</p>
-      </div>
-      <form class="form-popup__right" (submit)="sendForm($event)">
-        <input type="text" placeholder="Prénom*" required>
-        <input type="text" placeholder="Nom*" required>
-        <input type="text" placeholder="Coordonnées postales">
-        <input type="text" placeholder="Adresse postale">
-        <input type="text" placeholder="Ville">
-        <input type="text" placeholder="Code postal">
-        <input type="email" placeholder="Email*" required>
-        <input type="tel" placeholder="Téléphone*" required>
-        <input type="file" multiple>
-        <textarea rows="4" placeholder="Commentaires..."></textarea>
-        <div class="form-buttons">
-            <button type="submit">Envoyer</button>
-            <button type="button" class="close" (click)="closeForm()">Fermer</button>
-          </div>          
-      </form>
-    </div>
-  </div>
-  
+

@@ -1,0 +1,28 @@
+<div class="form-popup">
+  <div class="form-popup__backdrop"></div>
+  <div
+    class="form-popup__content"
+    [ngStyle]="{ top: top }"
+  >
+    <div class="form-popup__left">
+      <h2>{{ mission?.title }}</h2>
+      <p>{{ mission?.description }}</p>
+    </div>
+    <form class="form-popup__right" (submit)="sendForm($event)">
+      <input type="text" placeholder="Prénom*" required />
+      <input type="text" placeholder="Nom*" required />
+      <input type="text" placeholder="Coordonnées postales" />
+      <input type="text" placeholder="Adresse postale" />
+      <input type="text" placeholder="Ville" />
+      <input type="text" placeholder="Code postal" />
+      <input type="email" placeholder="Email*" required />
+      <input type="tel" placeholder="Téléphone*" required />
+      <input type="file" multiple />
+      <textarea rows="4" placeholder="Commentaires..."></textarea>
+      <div class="form-buttons">
+        <button type="submit">Envoyer</button>
+        <button type="button" class="close" (click)="close()">Fermer</button>
+      </div>
+    </form>
+  </div>
+</div>

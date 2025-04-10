@@ -1,51 +1,86 @@
+@use 'sass:map';
+@use 'scss/variables' as vars;
+
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto; // ✅ on autorise scroll vertical
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
+  font-size: map.get(vars.$font-sizes, base);
+  overscroll-behavior: none; 
+  display: flex;
+  flex-direction: column;
+}
 
-
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 .page-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // ✅ autorise la page à dépasser le viewport
-  height: auto; // ✅ important !
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+
+  &.modal-open {
+    transform: translateZ(0); // uniquement quand le modal est affiché
+    body.modal-open {
+      overflow: hidden;
+    }
+  }
+  //transform: translateZ(0); 
+
 }
 
 .main {
   flex: 1 0 auto;
   width: 100%;
+  position: relative;
+  padding-top: vars.$navbar-height;
+  margin: 0;
+  
+  @media (max-width: map.get(vars.$breakpoints, xs)) {
+    padding-right: 0;
+    padding-left: 0;
+    overflow-x: hidden;
+    padding-top: vars.$navbar-height-mobile;
+  }
 }
 
 app-sticky-footer {
-  position: sticky;
+  position: fixed;
   bottom: 0;
-  z-index: 999;
-}
-
-app-footer {
-  flex-shrink: 0;
-}
-
-body.modal-open {
-  overflow: hidden;
-
-  .navbar,
-  app-footer,
-  app-sticky-footer {
-    pointer-events: none;
-    user-select: none;
-    z-index: 1;
-    filter: blur(1px); // facultatif : pour montrer que c’est inactif
-  }
-  app-root {
-    transition: filter 0.3s ease;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: map.get(vars.$z-index, sticky);
+  
+  @media (max-width: map.get(vars.$breakpoints, xs)) {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
   }
 }
 
+app-navbar {
+  width: 100%;
+  position: relative;
+  
+  @media (max-width: map.get(vars.$breakpoints, xs)) {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+#accueil{ // Padding espace entre navbar et la premiere esction sur ecran mobile
+  @media (max-width: map.get(vars.$breakpoints, xs)) {
+  padding-top: vars.$navbar-height-mobile;
+  }
+}

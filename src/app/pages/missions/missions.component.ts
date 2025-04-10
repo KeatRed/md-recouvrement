@@ -1,51 +1,40 @@
-import { Component } from '@angular/core';
-import { NgForOf,NgIf } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-missions',
   standalone: true,
-  imports: [NgForOf,NgIf],
+  imports: [NgForOf],
   templateUrl: './missions.component.html',
   styleUrl: './missions.component.scss'
 })
 export class MissionsComponent {
   missions = [
     {
-      title: 'FACTURES IMPAYÉES',
-      icon: 'fa fa-file-text-o',
+      title: 'RECOUVREMENT AMIABLE DE VOS FACTURES',
       description: 'Gestion efficace de vos créances. Nous transformons vos impayés en liquidités rapidement.',
-      background: 'assets/facture.jpg'
+      background: 'assets/facture.webp'
     },
     {
       title: 'FAIRE EXÉCUTER UNE DÉCISION DE JUSTICE',
-      icon: 'fa fa-gavel',
       description: 'Application des décisions judiciaires par des officiers compétents. Résultats concrets garantis.',
-      background: 'assets/justice.jpg'
+      background: '/assets/justice.webp'
     },
     {
       title: 'SIGNIFICATION PAR COMMISSAIRE DE JUSTICE',
-      icon: 'fa fa-legal',
       description: 'Remise officielle d’actes par un commissaire de justice. Procédures maîtrisées et rapides.',
-      background: 'assets/dossier.jpg'
+      background: 'assets/dossier.webp'
     }
   ];
 
   selectedMission: any = null;
+  @Output() demandeOuverture = new EventEmitter<any>();
 
-  openForm(item: any) {
-    this.selectedMission = item;
-    document.body.classList.add('modal-open');
+  openForm(mission: any) {
+    this.demandeOuverture.emit(mission);
   }
   
-  closeForm() {
-    this.selectedMission = null;
-    document.body.classList.remove('modal-open');
-  }
+  
   
 
-  sendForm(event: Event) {
-    event.preventDefault();
-    alert('Formulaire envoyé !');
-    this.closeForm();
-  }
 }

@@ -1,15 +1,20 @@
 <section class="legal-wrapper">
-    <h1>Articles du Code des Procédures Civiles d'Exécution</h1>
-  
-    <div class="legal-article" *ngFor="let article of articles; let i = index">
-      <button class="article-header" (click)="toggleArticle(i)">
-        {{ article.title }}
-        <span class="arrow" [class.open]="openedArticleIndex === i">▼</span>
-      </button>
-  
-      <div class="article-body" [class.open]="openedArticleIndex === i">
-        <p *ngFor="let paragraph of article.content">{{ paragraph }}</p>
+  <h1>Articles du Code des Procédures Civiles d'Exécution</h1>
+
+  <div class="legal-article" *ngFor="let article of articles; let i = index; trackBy: trackByIndex">
+    <button class="article-header" (click)="toggleArticle(i)">
+      {{ article.title }}
+      <span class="arrow" [class.open]="openedArticleIndex === i">▼</span>
+    </button>
+
+    <div class="article-body" [class.open]="openedArticleIndex === i" *ngIf="openedArticleIndex === i">
+      <div class="article-content">
+        <p *ngFor="let paragraph of article.content; let pIndex = index" 
+           class="paragraph"
+           [style.animation-delay]="pIndex * 0.1 + 's'">
+          {{ paragraph }}
+        </p>
       </div>
     </div>
-  </section>
-  
+  </div>
+</section>

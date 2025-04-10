@@ -1,0 +1,74 @@
+// Breakpoints
+$breakpoints: (
+  xs: 430px,
+  mobile: 576px,
+  tablet: 768px,
+  desktop: 1024px,
+  large: 1200px,
+  x-large: 1440px,
+  xx-large: 1600px,
+  xxx-large: 1720px,
+  xxxx-large: 1900px,
+  xxxxx-large: 2200px
+);
+
+// Colors
+$colors: (
+  primary: #00435e,
+  grey: grey,
+  secondary: #eaeaea,
+  text: #333,
+  light: #f9f9f9,
+  white: #fff,
+  border: #ddd,
+  cyan: #33a0ad,
+  cyan-light: #33a1ad33
+);
+
+// Typography
+$font-sizes: (
+  xs: clamp(0.75rem, 1vw, 0.875rem),
+  sm: clamp(0.875rem, 1vw, 1rem),
+  base: clamp(1rem, 1.2vw, 1.1rem),
+  md: clamp(1.1rem, 1.5vw, 1.2rem),
+  lg: clamp(1.2rem, 2vw, 1.5rem),
+  xl: clamp(1.5rem, 3vw, 1.8rem)
+);
+
+// Spacing
+$spacings: (
+  xs: clamp(0.25rem, 0.5vw, 0.5rem),
+  sm: clamp(0.5rem, 1vw, 1rem),
+  md: clamp(1rem, 2vw, 2rem),
+  lg: clamp(2rem, 4vw, 4rem),
+  xl: 6rem
+);
+
+// Border radius
+$border-radius: (
+  sm: 4px,
+  md: 8px,
+  lg: 12px
+);
+
+// Transitions
+$transitions: (
+  fast: 0.2s ease,
+  base: 0.3s ease-out,
+  slow: 0.5s ease-in-out
+);
+
+// Z-index
+$z-index: (
+  base: 1,
+  header: 100,
+  modal: 1000,
+  sticky: 999
+);
+
+// Containers
+$container-max-width: 1200px;
+$content-max-width: 800px;
+
+$navbar-height: 80px;
+$navbar-height-mobile: 40px;
