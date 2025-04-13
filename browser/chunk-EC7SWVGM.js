@@ -1,0 +1,1 @@
+import{Ba as n,Oa as p,Pa as o,Xa as a}from"./chunk-J7A4XZEG.js";var c=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-espace-client"]],decls:2,vars:0,template:function(e,i){e&1&&(p(0,"p"),a(1,"espace-client works!"),o())},encapsulation:2})};export{c as EspaceClientComponent};
