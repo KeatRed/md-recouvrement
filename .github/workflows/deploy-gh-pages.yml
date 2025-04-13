@@ -28,5 +28,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: dist/md-recouvrement-v2
+          publish_dir: dist/md-recouvrement-v2/browser
 
