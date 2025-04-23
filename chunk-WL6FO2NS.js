@@ -1,1 +1,0 @@
-import{Ba as t,Oa as n,Pa as a,Xa as i}from"./chunk-J7A4XZEG.js";var m=class o{static \u0275fac=function(e){return new(e||o)};static \u0275cmp=t({type:o,selectors:[["app-formation"]],decls:2,vars:0,template:function(e,r){e&1&&(n(0,"p"),i(1,"formation works!"),a())},encapsulation:2})};export{m as FormationComponent};
