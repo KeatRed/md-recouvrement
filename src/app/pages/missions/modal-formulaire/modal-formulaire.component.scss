@@ -1,22 +1,128 @@
+@use '../../../../scss/variables' as vars;
+
+
+
+$form-max-width: map-get(vars.$breakpoints, xxx-large); // max à 1720px
+$form-min-width: 320px;
+
 .form-popup {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: map-get(vars.$z-index, modal);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  padding: map-get(vars.$spacings, sm);
+}
+
+.form-popup__content {
+  background-color: map-get(vars.$colors, white);
+  border-radius: map-get(vars.$border-radius, md);
+  padding: map-get(vars.$spacings, lg);
+  width: 100%;
+  max-width: min(95vw, $form-max-width);
+  min-width: $form-min-width;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  font-size: map-get(vars.$font-sizes, base);
+
+  display: flex;
+  flex-direction: column;
+  gap: map-get(vars.$spacings, md);
+
+  @media (max-width: map-get(vars.$breakpoints, mobile)) {
+    padding: map-get(vars.$spacings, md);
+    font-size: map-get(vars.$font-sizes, sm);
   }
-  
-  .form-popup__content {
-    position: absolute;
-    left: 50%;
-    top: var(--modal-top); // ← utilisé si CSS var, sinon remplacé dynamiquement
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  @media (min-width: map-get(vars.$breakpoints, desktop)) {
+    font-size: map-get(vars.$font-sizes, md);
   }
-  
+}
+
+.form-popup__left h2 {
+  font-size: map-get(vars.$font-sizes, xl);
+  margin-bottom: map-get(vars.$spacings, sm);
+  color: map-get(vars.$colors, primary);
+
+  @media (max-width: map-get(vars.$breakpoints, mobile)) {
+    font-size: map-get(vars.$font-sizes, lg); // légèrement plus petit sur mobile
+  }
+}
+
+.form-popup__left p {
+  font-size: map-get(vars.$font-sizes, md);
+  color: map-get(vars.$colors, text);
+
+  @media (max-width: map-get(vars.$breakpoints, mobile)) {
+    font-size: map-get(vars.$font-sizes, sm); // plus petit texte sur mobile
+  }
+}
+
+.form-popup__right input,
+.form-popup__right textarea {
+  width: 100%;
+  padding: map-get(vars.$spacings, sm);
+  font-size: map-get(vars.$font-sizes, base);
+  border-radius: map-get(vars.$border-radius, sm);
+  border: 1px solid map-get(vars.$colors, border);
+  margin-bottom: map-get(vars.$spacings, sm);
+  transition: border-color map-get(vars.$transitions, base);
+
+  &:focus {
+    outline: none;
+    border-color: map-get(vars.$colors, primary); // focus bleu
+  }
+
+  @media (max-width: map-get(vars.$breakpoints, mobile)) {
+    font-size: map-get(vars.$font-sizes, sm);
+    padding: map-get(vars.$spacings, xs);
+  }
+
+  @media (min-width: map-get(vars.$breakpoints, desktop)) {
+    font-size: map-get(vars.$font-sizes, base); // réduit
+    padding: map-get(vars.$spacings, sm); // réduit
+  }
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: map-get(vars.$spacings, sm);
+
+  button {
+    flex: 1;
+    padding: map-get(vars.$spacings, sm);
+    font-size: map-get(vars.$font-sizes, base);
+    border-radius: map-get(vars.$border-radius, sm);
+    background-color: map-get(vars.$colors, primary);
+    color: map-get(vars.$colors, white);
+    border: none;
+    cursor: pointer;
+    transition: all map-get(vars.$transitions, base);
+
+    &.close {
+      background-color: map-get(vars.$colors, grey);
+
+    }
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+
+    @media (max-width: map-get(vars.$breakpoints, mobile)) {
+      font-size: map-get(vars.$font-sizes, sm);
+      padding: map-get(vars.$spacings, xs);
+    }
+
+    @media (min-width: map-get(vars.$breakpoints, desktop)) {
+      font-size: map-get(vars.$font-sizes, sm); // plus discret sur grand écran
+      padding: map-get(vars.$spacings, sm); // padding réduit
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@use '../../../../scss/variables' as vars;
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(51, 51, 51, 0.6); // #333 à 60%
+  z-index: map-get(vars.$z-index, modal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: map-get(vars.$spacings, sm);
+  overflow-y: auto;
+}
+
+.modal-container {
+  background-color: map-get(vars.$colors, white);
+  border-radius: map-get(vars.$border-radius, lg);
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: map-get(vars.$spacings, xl);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: slideFadeIn 0.3s ease-out;
+  position: relative;
+
+  h2 {
+    font-size: map-get(vars.$font-sizes, xl);
+    color: map-get(vars.$colors, primary);
+    margin-bottom: map-get(vars.$spacings, md);
+  }
+
+  h3 {
+    font-size: map-get(vars.$font-sizes, lg);
+    color: map-get(vars.$colors, text);
+    margin-top: map-get(vars.$spacings, lg);
+    margin-bottom: map-get(vars.$spacings, sm);
+  }
+
+  p, ul {
+    font-size: map-get(vars.$font-sizes, base);
+    color: map-get(vars.$colors, text);
+    margin-bottom: map-get(vars.$spacings, sm);
+    line-height: 1.6;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: map-get(vars.$spacings, md);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: map-get(vars.$spacings, md);
+
+  .close-button {
+    background: none;
+    border: none;
+    font-size: map-get(vars.$font-sizes, xl);
+    color: map-get(vars.$colors, grey);
+    cursor: pointer;
+    transition: color map-get(vars.$transitions, fast);
+
+    &:hover {
+      color: map-get(vars.$colors, primary);
+    }
+  }
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: map-get(vars.$breakpoints, mobile)) {
+  .modal-container {
+    max-width: 95vw;
+    padding: map-get(vars.$spacings, lg);
+  }
+}

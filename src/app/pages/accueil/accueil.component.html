@@ -1,7 +1,7 @@
 
   <div class="blog-card">
     <div class="meta">
-      <div class="photo" style="background-image: url('assets/corpo6.webp')"></div>
+      <div class="photo" style="background-image: url('assets/corpo10.webp')"></div>
 
     </div>
     <div class="description">
@@ -14,7 +14,7 @@
         sembler similaires à première vue, nous opérons différemment et jouons des rôles 
         distincts dans le domaine du recouvrement.</p>
       <p class="read-more">
-        <a href="#">En savoir plus</a>
+        <a href="#" (click)="openModal(0)">En savoir plus</a> 
       </p>
     </div>
   </div>
@@ -32,7 +32,16 @@
         Nous nous adressons à des candidats à la recherche de compétences professionnelles leur 
         permettant de remplir des fonctions financières et commerciales dans leur entreprise d’accueil...</p>
       <p class="read-more">
-        <a href="#">En savoir plus</a>
+        <a href="#" (click)="openModal(1)">En savoir plus</a>
       </p>
     </div>
   </div>
+  <ng-container *ngIf="selectedModalIndex !== null">
+    <app-modal-info
+      [visible]="true"
+      [title]="modals[selectedModalIndex!].title"
+      [content]="modals[selectedModalIndex!].content"
+      (close)="closeModal()">
+    </app-modal-info>
+  </ng-container>
+  

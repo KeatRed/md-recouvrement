@@ -123,10 +123,12 @@ export class AppComponent {
     this.modalTop = `${positionY}px`;
   
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open'); 
   }
 closeForm() {
   this.selectedMission = null;
   document.body.style.overflow = '';
+  document.body.classList.remove('modal-open');
 }
 
 }

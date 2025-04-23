@@ -26,12 +26,14 @@
     <section id="contact"><app-contact></app-contact></section>
   </main>
 
-  <app-modal-formulaire
-    *ngIf="selectedMission"
-    [mission]="selectedMission"
-    [top]="modalTop"
-    (closed)="closeForm()"
-  />
+
 
   <app-sticky-footer></app-sticky-footer>
 </div>
+
+<app-modal-formulaire
+*ngIf="selectedMission"
+[mission]="selectedMission"
+[top]="modalTop"
+(closed)="closeForm()"
+/>

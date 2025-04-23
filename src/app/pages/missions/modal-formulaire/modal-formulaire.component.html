@@ -5,8 +5,16 @@
     [ngStyle]="{ top: top }"
   >
     <div class="form-popup__left">
-      <h2>{{ mission?.title }}</h2>
-      <p>{{ mission?.description }}</p>
+      <h1>{{ mission?.title }}</h1>
+      <h2>{{ mission?.title2 }}</h2>
+      <p>{{ mission?.description2 }}</p>
+      <h3>{{ mission?.title3 }}</h3>
+      <p>{{ mission?.description3 }}</p>
+      <ul class="list">
+        <li *ngFor="let item of mission?.list">{{ item }}</li>
+      </ul>
+      <h4>{{ mission?.title4 }}</h4>
+      <p>{{ mission?.description4 }}</p>
     </div>
     <form class="form-popup__right" (submit)="sendForm($event)">
       <input type="text" placeholder="Prénom*" required />
@@ -20,8 +28,8 @@
       <input type="file" multiple />
       <textarea rows="4" placeholder="Commentaires..."></textarea>
       <div class="form-buttons">
-        <button type="submit">Envoyer</button>
         <button type="button" class="close" (click)="close()">Fermer</button>
+        <button type="submit">Envoyer</button>
       </div>
     </form>
   </div>
