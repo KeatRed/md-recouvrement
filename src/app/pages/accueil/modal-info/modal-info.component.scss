@@ -1,89 +1,60 @@
 @use '../../../../scss/variables' as vars;
-
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(51, 51, 51, 0.6); // #333 à 60%
-  z-index: map-get(vars.$z-index, modal);
+  z-index: 10000;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: map-get(vars.$spacings, sm);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
   overflow-y: auto;
+  padding: 2rem;
 }
 
 .modal-container {
-  background-color: map-get(vars.$colors, white);
-  border-radius: map-get(vars.$border-radius, lg);
-  width: 100%;
-  max-width: 800px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: map-get(vars.$spacings, xl);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  animation: slideFadeIn 0.3s ease-out;
   position: relative;
-
-  h2 {
-    font-size: map-get(vars.$font-sizes, xl);
-    color: map-get(vars.$colors, primary);
-    margin-bottom: map-get(vars.$spacings, md);
-  }
-
-  h3 {
-    font-size: map-get(vars.$font-sizes, lg);
-    color: map-get(vars.$colors, text);
-    margin-top: map-get(vars.$spacings, lg);
-    margin-bottom: map-get(vars.$spacings, sm);
-  }
-
-  p, ul {
-    font-size: map-get(vars.$font-sizes, base);
-    color: map-get(vars.$colors, text);
-    margin-bottom: map-get(vars.$spacings, sm);
-    line-height: 1.6;
-  }
-
-  ul {
-    list-style: disc;
-    padding-left: map-get(vars.$spacings, md);
-  }
-}
-
-.modal-header {
+  background-color: white;
+  width: 80vw;
+  max-width: 1200px;
+  border-radius: 16px;
+  padding: 2rem 2rem 2rem 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow: hidden; // important pour ne pas que le bouton défile
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: map-get(vars.$spacings, md);
-
-  .close-button {
-    background: none;
-    border: none;
-    font-size: map-get(vars.$font-sizes, xl);
-    color: map-get(vars.$colors, grey);
-    cursor: pointer;
-    transition: color map-get(vars.$transitions, fast);
-
-    &:hover {
-      color: map-get(vars.$colors, primary);
-    }
-  }
+  flex-direction: column;
 }
 
-@keyframes slideFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.modal-body {
+  overflow-y: auto;
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.modal-header {
+  //margin-bottom: 1rem;
+  //padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.15); // ✅ ombre sous le header
+  background-color: white; // utile si fond semi-transparent derrière
+  z-index: 1;
 }
 
-@media (max-width: map-get(vars.$breakpoints, mobile)) {
-  .modal-container {
-    max-width: 95vw;
-    padding: map-get(vars.$spacings, lg);
-  }
+.modal-header h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #333;
+  z-index: 2;
 }

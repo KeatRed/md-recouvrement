@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, OnDestroy, OnInit } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 @Component({
@@ -8,27 +8,23 @@ import { CommonModule } from '@angular/common';
   templateUrl: './modal-info.component.html',
   styleUrls: ['./modal-info.component.scss']
 })
-export class ModalInfoComponent implements OnChanges {
+export class ModalInfoComponent implements OnInit, OnDestroy {
   @Input() visible = false;
-  @Input() title = '';
-  @Input() content: string | null = null;
+  @Input() title!: string;
+  @Input() content!: string;
   @Output() close = new EventEmitter<void>();
-  //showInfoModal = false;
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['visible']) {
-      if (this.visible) {
-        document.body.style.overflow = 'hidden'; // 🔒 empêche scroll
-      } else {
-        document.body.style.overflow = ''; // ✅ réactive scroll
-      }
+
+  ngOnInit(): void {
+    if (this.visible) {
+      document.documentElement.style.overflow = 'hidden';
     }
   }
 
-
-  onClose() {
-    this.close.emit();
-    document.body.style.overflow = ''; // sécurité en cas de fermeture
+  ngOnDestroy(): void {
+    document.documentElement.style.overflow = '';
   }
 
-  
+  onClose(): void {
+    this.close.emit();
+  }
 }

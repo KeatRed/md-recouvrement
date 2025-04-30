@@ -16,24 +16,6 @@
       </p>
     </div>
   </div>
-  <div class="blog-card alt">
-    <div class="meta">
-      <div class="photo" style="background-image: url('assets/learning.webp')"></div>
-
-    </div>
-    <div class="description">
-      <h1>Nos Formations</h1>
-      <h2>Maîtrisez le recouvrement amiable grâce à notre programme.</h2>
-      <p class="text">La formation “les outils pour être un bon Chargé de Recouvrement” est une formation avec des 
-        contenus exclusivement métiers, centrés sur l’acquisition de savoir-faire opérationnels, directement 
-        applicables. 
-        Nous nous adressons à des candidats à la recherche de compétences professionnelles leur 
-        permettant de remplir des fonctions financières et commerciales dans leur entreprise d’accueil...</p>
-      <p class="read-more">
-        <a href="#" (click)="openModal(1)">En savoir plus</a>
-      </p>
-    </div>
-  </div>
   <ng-container *ngIf="selectedModalIndex !== null">
     <app-modal-info
       [visible]="true"
