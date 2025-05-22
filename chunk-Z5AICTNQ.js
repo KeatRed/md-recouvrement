@@ -1,0 +1,1 @@
+import{Da as n,Sa as o,Ta as a,gb as i}from"./chunk-4UGYQCZV.js";var p=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-paiement"]],decls:2,vars:0,template:function(e,s){e&1&&(o(0,"p"),i(1,"paiement works!"),a())},encapsulation:2})};export{p as PaiementComponent};

@@ -1,0 +1,1 @@
+import{Da as t,Sa as n,Ta as a,gb as i}from"./chunk-4UGYQCZV.js";var m=class o{static \u0275fac=function(e){return new(e||o)};static \u0275cmp=t({type:o,selectors:[["app-formation"]],decls:2,vars:0,template:function(e,r){e&1&&(n(0,"p"),i(1,"formation works!"),a())},encapsulation:2})};export{m as FormationComponent};

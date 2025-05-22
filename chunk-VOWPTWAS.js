@@ -1,0 +1,1 @@
+import{Da as n,Sa as p,Ta as o,gb as a}from"./chunk-4UGYQCZV.js";var c=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-espace-client"]],decls:2,vars:0,template:function(e,i){e&1&&(p(0,"p"),a(1,"espace-client works!"),o())},encapsulation:2})};export{c as EspaceClientComponent};

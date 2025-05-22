@@ -1,1 +1,0 @@
-import{Ca as n,Pa as o,Qa as s,_a as m}from"./chunk-WLAC566R.js";var p=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-televersement"]],decls:2,vars:0,template:function(e,a){e&1&&(o(0,"p"),m(1,"televersement works!"),s())},encapsulation:2})};export{p as TeleversementComponent};
