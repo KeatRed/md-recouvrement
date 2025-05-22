@@ -1,27 +1,37 @@
 <!-- ✅ Sticky Navbar en dehors du wrapper -->
 <header class="navbar">
   <div class="navbar__left">
-    <img src="assets/logo.jpg" alt="Logo MD Recouvrement" class="logo" />
+    <img [src]="isMobile ? 'assets/logoCabinetMDrecouvrement.svg' : 'assets/logoMDrecouvrement.svg'" alt="Logo MD Recouvrement" class="logo" />
   </div>
 
   <nav class="navbar__center">
     <div class="pill" #pill></div>
 
-    <a *ngFor="let link of navbarLinks; let i = index"
-       href="#"
-       (click)="activateLink($event, i)"
-       [class.active]="activeIndex === i"
-       #navLink>
-      {{ link.label }}
-    </a>
+<a *ngFor="let link of navbarLinks; let i = index"
+   href="#"
+   (click)="handleNavClick($event, link, i)"
+   [class.active]="activeIndex === i"
+   #navLink>
+  {{ link.label }}
+</a>
+
+
   </nav>
 </header>
+<app-tarif
+  [isVisible]="isTarifModalOpen"
+  (close)="isTarifModalOpen = false">
+</app-tarif>
+<app-simulateur
+  [isVisible]="isSimulateurModalOpen"
+  (close)="isSimulateurModalOpen = false">
+</app-simulateur>
 
-<!-- ✅ Le reste du site -->
 <div class="page-wrapper" [class.modal-open]="selectedMission">
   <main class="main">
     <section id="accueil"><app-accueil></app-accueil></section>
     <section id="missions"><app-missions (demandeOuverture)="openForm($event)"></app-missions></section>
+
     <section id="textes-legaux"><app-textes-legaux></app-textes-legaux></section>
     <section id="contact"><app-contact></app-contact></section>
   </main>
@@ -34,6 +44,6 @@
 <app-modal-formulaire
 *ngIf="selectedMission"
 [mission]="selectedMission"
-[top]="modalTop"
+
 (closed)="closeForm()"
 />

@@ -1,11 +1,16 @@
 <div class="modal-backdrop" *ngIf="visible">
-  <div class="modal-container">
+  <div class="modal-container" [ngClass]="{ '--form': showForm }">
     <button class="close-button" (click)="onClose()">×</button>
-    
+
     <div class="modal-header">
       <h2>{{ title }}</h2>
     </div>
 
-    <div class="modal-body" [innerHTML]="content"></div>
+    <!-- ✅ Scroll interne ici -->
+    <div class="modal-scroll">
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
+    </div>
   </div>
 </div>

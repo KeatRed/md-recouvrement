@@ -2,14 +2,9 @@
     <h1 class="contact-title">Contactez-nous</h1>
     <div class="contact-grid">
       <div class="contact-box">
-        <i class="fas fa-phone-alt contact-icon"></i>
-        <h4>Téléphone</h4>
-        <p><a href="tel:0651216605">06.51.21.66.05</a></p>
-      </div>
-      <div class="contact-box">
         <i class="fas fa-envelope contact-icon"></i>
         <h4>Email</h4>
-        <p><a href="mailto:m.darde@mdrecouvrement.com">m.darde&#64;mdrecouvrement.com</a></p>
+        <p><a href="mailto:m.darde@mdrecouvrement.com">contact&#64;mdrecouvrement.com</a></p>
       </div>
     </div>
   
@@ -31,5 +26,20 @@
       <strong>Chantilly</strong>
       <p>Du lundi au vendredi, de 9h à 17h30 sans interruption</p>
     </div>
+<div class="mentions-legales">
+  <h4>
+    © Copyright 2025 MDrecouvrement /
+    <button type="button" class="legal-link" (click)="showMentions = true">
+  Mentions légales
+</button>
+ /
+
+    <a href="#" (click)="showCGS = true">Conditions générales de services</a>
+  </h4>
+</div>
+
+<app-mentions-legales *ngIf="showMentions" (close)="showMentions = false"></app-mentions-legales>
+<app-conditions-generales *ngIf="showCGS" (close)="showCGS = false"></app-conditions-generales>
+
   </div>
   

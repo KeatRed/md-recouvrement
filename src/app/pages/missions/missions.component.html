@@ -1,8 +1,9 @@
 <section class="missions-grid">
   <div class="card" 
   *ngFor="let item of missions" 
+    [class.card--soon]="item.soon"
   [style.backgroundImage]="'url(' + item.background + ')'"
-  (click)="openForm(item)">
+  (click)="!item.soon && openForm(item)">
     <div class="card-top">
       
       <h3>{{ item.title }}</h3>

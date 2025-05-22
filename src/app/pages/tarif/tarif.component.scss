@@ -1,0 +1,121 @@
+@use 'sass:map';
+@use '../../../scss/variables' as vars;
+
+.tarif-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(map.get(vars.$colors, dark), 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: map.get(vars.$z-index, modal);
+  pointer-events: auto;
+  backdrop-filter: blur(2px);
+}
+
+.tarif-modal {
+  background-color: map.get(vars.$colors, light);
+  border-radius: map.get(vars.$border-radius, md);
+  padding: 2.5rem;
+  width: 95%;
+  max-width: 840px;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transition: max-width 0.4s ease, max-height 0.4s ease;
+  position: relative;
+  margin: 5vh auto;
+}
+
+.modal-scroll {
+  overflow-y: auto;
+  max-height: 70vh;
+  padding-right: 0.5rem;
+
+  /* ✅ Scrollbar stylée */
+  scrollbar-width: thin;
+  scrollbar-color: map.get(vars.$colors, primary) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: map.get(vars.$colors, primary);
+    border-radius: 10px;
+  }
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: map.get(vars.$font-sizes, lg);
+  color: map.get(vars.$colors, primary);
+}
+
+.modal-body {
+  margin-top: 1.5rem;
+  font-family: 'Lato', sans-serif;
+  font-size: map.get(vars.$font-sizes, base);
+  line-height: 1.6;
+  color: map.get(vars.$colors, text);
+
+  ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem; // ✅ taille réduite (env. 14px)
+      line-height: 1.4;
+      color: map.get(vars.$colors, text);
+    }
+  }
+
+  h3 {
+    font-size: map.get(vars.$font-sizes, md);
+    margin-top: 1.5rem;
+    color: map.get(vars.$colors, secondary); // ✅ couleur de titre bien lisible
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: map.get(vars.$colors, secondary); // ✅ couleur alignée avec les h3
+}
+
+
+@media (max-width: 768px) {
+  .tarif-modal {
+    padding: 1.5rem;
+
+    .modal-body {
+      font-size: 0.875rem; // environ 14px
+
+      ul li {
+        font-size: 0.8125rem; // environ 13px
+        line-height: 1.4;
+      }
+
+      h3 {
+        font-size: map.get(vars.$font-sizes, base); // passe de md à base
+      }
+    }
+
+    .modal-header h2 {
+      font-size: map.get(vars.$font-sizes, md);
+    }
+  }
+}

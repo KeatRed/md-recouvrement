@@ -1,0 +1,56 @@
+<div class="simulateur-modal-backdrop" *ngIf="isVisible">
+  <div class="simulateur-modal">
+    <button class="close-button" (click)="closeModal()">×</button>
+
+    <div class="modal-header">
+      <h2>Simulez votre dossier de recouvrement amiable</h2>
+    </div>
+
+    <div class="modal-scroll">
+      <div class="modal-body">
+        <p>Vous êtes intéressé par nos services ?</p>
+        <p><strong>Vous souhaitez connaître le montant*</strong> que vous allez récupérer sur votre impayé ?</p>
+
+        <p>Simulez votre dossier de recouvrement amiable :</p>
+
+        <form (submit)="calculerSimulation($event)">
+  <label>
+    Montant de la créance (€) :
+    <input type="number" [(ngModel)]="montant" name="montant" required />
+  </label>
+<label>
+  Nombre de dossier(s) / débiteur(s) :
+  <input type="number" [(ngModel)]="nbDossiers" name="nbDossiers" min="1" required />
+</label>
+
+<label>
+  Nombre de factures :
+  <input type="number" [(ngModel)]="nbFactures" name="nbFactures" min="1" required />
+</label>
+
+  <label>
+    Ancienneté de la créance :
+    <select [(ngModel)]="anciennete" name="anciennete" required>
+      <option value="0-6">Moins de 6 mois</option>
+      <option value="6+">Plus de 6 mois</option>
+    </select>
+  </label>
+
+  <!-- ✅ Résultat dynamique ici -->
+  <div *ngIf="montantNet !== null" class="simulation-resultat fade-in">
+    <p>
+      <strong>Montant estimé à récupérer :</strong><br />
+      <span>{{ montantNet | number:'1.2-2' }} €</span>
+    </p>
+  </div>
+
+  <div class="cta-wrapper">
+    <button type="submit" class="btn-creer-dossier">Simuler</button>
+  </div>
+</form>
+
+        <p style="margin-top: 1rem; font-size: 0.85rem;"><em>* Simulation indicative dépendante du succès de la démarche</em></p>
+      </div>
+    </div>
+  </div>
+</div>

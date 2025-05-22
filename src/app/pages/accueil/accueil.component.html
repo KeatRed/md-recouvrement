@@ -1,27 +1,74 @@
-
-  <div class="blog-card">
-    <div class="meta">
-      <div class="photo" style="background-image: url('assets/corpo10.webp')"></div>
-
-    </div>
-    <div class="description">
-      <h1>Vous êtes une entreprise</h1>
-      <h2>Vous avez un impayé ? Confiez-nous votre dossier.</h2>
-      <p class="text"> Le Cabinet MDrecouvrement accompagne les petites et moyennes entreprises 
-        dans la gestion de leurs impayés clients, en privilégiant une approche amiable, 
-        efficace et respectueuse. Nous intervenons principalement dans les départements du val-d'Oise (95),
-         de l’Oise (60) ainsi que sur la plateforme de Roissy (93/77), au cœur d’un tissu économique dynamique.</p>
-      <p class="read-more">
-        <a href="#" (click)="openModal(0)">En savoir plus</a> 
-      </p>
-    </div>
+<div class="blog-card">
+  <div class="meta">
+    <div class="photo" style="background-image: url('assets/corpo10.webp')"></div>
   </div>
-  <ng-container *ngIf="selectedModalIndex !== null">
-    <app-modal-info
-      [visible]="true"
-      [title]="modals[selectedModalIndex!].title"
-      [content]="modals[selectedModalIndex!].content"
-      (close)="closeModal()">
-    </app-modal-info>
+  <div class="description">
+    <h1>Vous êtes une entreprise</h1>
+    <h2>Vous avez un impayé ? Confiez-nous votre dossier.</h2>
+    <p class="text">
+      Le Cabinet MDrecouvrement accompagne les petites et moyennes entreprises dans la gestion de leurs impayés pour optimiser leur trésorerie,
+      en privilégiant une approche amiable, efficace et respectueuse de leur relation client.
+    </p>
+    <p class="read-more">
+      <a href="#" (click)="openModal(0)">En savoir plus</a>
+    </p>
+  </div>
+</div>
+
+<ng-container *ngIf="selectedModalIndex !== null">
+  <app-modal-info
+    [visible]="true"
+    [title]="modals[selectedModalIndex!].title"
+    (close)="closeModal()"
+    [ngClass]="{ '--form': showForm }"
+  >
+  <ng-container *ngIf="!showForm; else formTemplate">
+    <section class="presentation-mdrecouvrement fade-in" [class.active]="showPresentationActive">
+
+      <p>
+        Le cabinet MDrecouvrement est spécialisé dans le recouvrement amiable et contentieux de vos créances.
+        Nous vous accompagnons avec efficacité et professionnalisme pour récupérer vos impayés en toute sérénité
+        et optimiser votre trésorerie.
+      </p>
+  
+      <h3>Notre offre s’adresse aux :</h3>
+      <ul>
+        <li>Entreprises du secteur des services</li>
+        <li>Artisans</li>
+        <li>Professions libérales</li>
+        <li>Garages</li>
+        <li>Établissements scolaires</li>
+        <li>Bailleurs</li>
+        <li>Et toutes structures confrontées à des retards ou défauts de paiement</li>
+      </ul>
+  
+      <h3>Ce qui nous distingue :</h3>
+      <ul>
+        <li><strong>Réactivité et efficacité :</strong> Une prise en charge immédiate des dossiers pour une résolution rapide.</li>
+        <li><strong>Aucun frais caché :</strong> Un modèle de rémunération basé sur le succès, sans avance de frais pour vos clients.</li>
+        <li><strong>Ethique et respect :</strong> Une approche respectueuse des débiteurs.</li>
+        <li><strong>Gestion transparente :</strong> Un suivi en temps réel de votre dossier.</li>
+        <li><strong>Une démarche RSE :</strong> Une prise en compte des enjeux du développement durable.</li>
+      </ul>
+  
+      <div class="cta-wrapper">
+        <button class="btn-creer-dossier" (click)="creerDossier()">Créer mon dossier</button>
+      </div>
+    </section>
   </ng-container>
   
+
+    <ng-template #formTemplate>
+      <section class="formulaire-mdrecouvrement fade-in" [class.active]="showForm">
+        <form (ngSubmit)="validerFormulaire()" #dossierForm="ngForm">
+          <input name="prenom" ngModel placeholder="Prénom*" required />
+          <input name="nom" ngModel placeholder="Nom*" required />
+          <input name="telephone" ngModel placeholder="Téléphone*" required />
+          <div class="cta-wrapper">
+            <button type="submit" class="btn-valider">Valider</button>
+          </div>
+        </form>
+      </section>
+    </ng-template>
+  </app-modal-info>
+</ng-container>

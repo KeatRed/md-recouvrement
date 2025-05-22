@@ -14,87 +14,120 @@
     margin-bottom: map.get(vars.$spacings, md);
     color: map.get(vars.$colors, primary);
   }
+}
 
-  .legal-article {
-    margin-bottom: map.get(vars.$spacings, md);
-    border: 1px solid map.get(vars.$colors, primary);
-    border-radius: map.get(vars.$border-radius, md);
+.legal-article {
+  margin-bottom: map.get(vars.$spacings, md);
+  border: 1px solid map.get(vars.$colors, primary);
+  border-radius: map.get(vars.$border-radius, md);
+  overflow: hidden;
+  background-color: white;
+
+  .article-body {
+    max-height: 0;
     overflow: hidden;
+    opacity: 0;
+    transform-origin: top;
+    transform: translateY(-20px);
+    transition:
+      max-height map.get(vars.$transitions, base),
+      opacity map.get(vars.$transitions, base),
+      transform map.get(vars.$transitions, base),
+      padding map.get(vars.$transitions, base);
+    will-change: transform, opacity, max-height;
+    background: #fff;
 
-    .article-header {
-      font-family: 'Poppins', sans-serif;
-      width: 100%;
-      padding: map.get(vars.$spacings, md);
-      background-color: map.get(vars.$colors, light);
-      border: none;
-      text-align: left;
-      font-size: map.get(vars.$font-sizes, base);
-      font-weight: 600;
-      color: map.get(vars.$colors, primary);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      &:hover {
-        background: map.get(vars.$colors, secondary);
-      }
-
-      .arrow {
-        transition: transform map.get(vars.$transitions, base);
-      }
-
-      .arrow.open {
-        transform: rotate(180deg);
-      }
+    .article-content {
+      padding: 0 1rem;
     }
 
-    .article-body {
-      max-height: 0;
-      overflow: hidden;
+    .paragraph {
+      margin: 0.8rem 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #333;
       opacity: 0;
-      transform-origin: top;
-      transform: translateY(-20px);
-      transition: 
-        max-height map.get(vars.$transitions, base),
-        opacity map.get(vars.$transitions, base),
-        transform map.get(vars.$transitions, base),
-        padding map.get(vars.$transitions, base);
-      will-change: transform, opacity, max-height;
-      background: #fff;
-
-      .article-content {
-        padding: 0 1rem;
-      }
-
-      .paragraph {
-        margin: 0.8rem 0;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: #333;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: slideIn 0.5s ease-in-out forwards;
-      }
-
-      &.open {
-        max-height: 1000px;
-        opacity: 1;
-        transform: translateY(0);
-        padding: 1rem;
-      }
+      transform: translateY(20px);
+      animation: slideIn 0.5s ease-in-out forwards;
     }
 
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    &.open {
+      max-height: 1000px;
+      opacity: 1;
+      transform: translateY(0);
+      padding: 1rem;
     }
+  }
+  .paragraph {
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: both;
+}
+
+.slide-in {
+  animation: slideIn 0.4s ease-in forwards;
+}
+
+.slide-out {
+  animation: slideOut 0.4s ease-in forwards;
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+}
+
+.article-header {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  padding: map.get(vars.$spacings, md);
+  background-color: map.get(vars.$colors, light);
+  border: none;
+  text-align: left;
+  font-size: map.get(vars.$font-sizes, base);
+  font-weight: 600;
+  color: map.get(vars.$colors, primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out 0.05s, color 0.3s ease-in-out 0.1s;
+
+  &:hover {
+    background-color: map.get(vars.$colors, secondary);
+    color: white;
+  }
+
+  &.open {
+    background-color: map.get(vars.$colors, secondary);
+    color: white;
+  }
+}
+
+.arrow {
+  transition: transform map.get(vars.$transitions, base);
+  &.open {
+    transform: rotate(180deg);
   }
 }
 
@@ -105,18 +138,16 @@
     h1 {
       font-size: map.get(vars.$font-sizes, lg);
     }
+  }
 
-    .legal-article {
-      .article-header {
-        font-size: map.get(vars.$font-sizes, sm);
-        padding: map.get(vars.$spacings, sm);
-      }
+  .article-header {
+    font-size: map.get(vars.$font-sizes, sm);
+    padding: map.get(vars.$spacings, sm);
+  }
 
-      .article-body {
-        p {
-          font-size: 0.9rem;
-        }
-      }
+  .legal-article .article-body {
+    p {
+      font-size: 0.9rem;
     }
   }
 }

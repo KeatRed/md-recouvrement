@@ -27,12 +27,26 @@
       border-radius: 2px;
     }
   }
+  .legal-link {
+  background: none;
+  border: none;
+  color: map.get(vars.$colors, primary);
+  text-decoration: underline;
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    color: map.get(vars.$colors, secondary);
+  }
+}
+
   .contact-grid {
     display: flex;
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
     margin-bottom: 2rem;
+    align-items: stretch;
   }
 
   .contact-box {
@@ -41,7 +55,7 @@
     border-radius: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     width: 250px;
-    max-width: 90%;
+    max-width: 90vw;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
 

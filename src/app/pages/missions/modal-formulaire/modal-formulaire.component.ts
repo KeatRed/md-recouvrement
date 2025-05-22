@@ -11,9 +11,22 @@ import { FormsModule } from '@angular/forms';
 })
 export class ModalFormulaireComponent {
   @Input() mission: any;
-  @Input() top: string = '50vh';
+
 
   @Output() closed = new EventEmitter<void>();
+openSections: number[] = [];
+
+toggle(index: number): void {
+  if (this.openSections.includes(index)) {
+    this.openSections = this.openSections.filter(i => i !== index);
+  } else {
+    this.openSections.push(index);
+  }
+}
+
+isOpen(index: number): boolean {
+  return this.openSections.includes(index);
+}
 
   sendForm(event: Event): void {
     event.preventDefault();

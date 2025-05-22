@@ -1,3 +1,8 @@
+@use 'sass:map';
+@use '../../../scss/variables' as vars;
+
+
+
 .missions-grid {
     display: grid;
       // 1 colonne par défaut
@@ -168,7 +173,28 @@
       }
     }
   }
-  
+.card--soon::after {
+  content: "Bientôt disponible";
+  position: absolute;
+  top: 2.3rem; // ✅ descend la banderole
+  right: -3.0rem;
+
+  width: 300px;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background: map.get(vars.$colors, primary);
+  transform: rotate(45deg);
+  z-index: 2;
+  padding: 0.3rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+
   @media (max-width: 600px) {
     .form-popup__content {
       max-height: 90vh;

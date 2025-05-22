@@ -1,15 +1,26 @@
 <div class="form-popup">
   <div class="form-popup__backdrop"></div>
-  <div
-    class="form-popup__content"
-    [ngStyle]="{ top: top }"
-  >
-    <div class="form-popup__left">
+  <div class="form-popup__content">
+    <div class="form-popup__texte">
       <h2>{{ mission?.title }}</h2>
-      <p [innerHTML]="mission?.html"></p>
+      <div *ngIf="mission?.sections">
+<div *ngFor="let section of mission.sections; let i = index" class="form-popup__section-wrapper">
 
+<h3 (click)="toggle(i)" [class.active]="isOpen(i)">
+  {{ section.title }}
+  <span class="toggle-indicator">{{ isOpen(i) ? '−' : '+' }}</span>
+</h3>
+
+  <div *ngIf="isOpen(i)" [innerHTML]="section.content" class="animated-section"></div>
+
+</div>
+
+      </div>
     </div>
-    <form class="form-popup__right" (submit)="sendForm($event)">
+<form class="form-popup__form" (submit)="sendForm($event)">
+  <div class="form-popup__form-header">
+    <h3 class="form-popup__form-title">Transmettez-nous votre dossier</h3>
+  </div>
       <input type="text" placeholder="Prénom*" required />
       <input type="text" placeholder="Nom*" required />
       <input type="text" placeholder="Coordonnées postales" />
@@ -20,10 +31,10 @@
       <input type="tel" placeholder="Téléphone*" required />
       <input type="file" multiple />
       <textarea rows="4" placeholder="Commentaires..."></textarea>
-      <div class="form-buttons">
-        <button type="button" class="close" (click)="close()">Fermer</button>
-        <button type="submit">Envoyer</button>
-      </div>
-    </form>
+  <div class="form-popup__form-buttons">
+    <button type="button" class="close" (click)="close()">Fermer</button>
+    <button type="submit">Envoyer</button>
+  </div>
+</form>
   </div>
 </div>

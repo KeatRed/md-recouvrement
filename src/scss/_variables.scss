@@ -12,18 +12,31 @@ $breakpoints: (
   xxxxx-large: 2200px
 );
 
+$z-index: (
+  base: 1,
+  dropdown: 100,
+  sticky: 200,
+  fixed: 300,
+  modal: 999,
+  tooltip: 1000
+);
+
+
 // Colors
 $colors: (
   primary: #00435e,
-  grey: grey,
-  secondary: #eaeaea,
-  text: #333,
-  light: #f9f9f9,
-  white: #fff,
-  border: #ddd,
-  cyan: #33a0ad,
-  cyan-light: #33a1ad33
+  secondary: #33a0ad,
+  success: #28a745,         // ✅ Vert de validation moderne
+  warning: #ffc107,         // (optionnel) Jaune pour avertissement
+  danger: #dc3545,          // (optionnel) Rouge pour erreurs
+  info: #17a2b8,            // (optionnel) Bleu clair pour infos
+  gray-light: #dcdcdc,
+  gray-dark: #6c757d,
+  text: #333333,
+  light: #f8f9fa,
+  dark: #212529
 );
+
 
 // Typography
 $font-sizes: (

@@ -19,7 +19,25 @@ interface Article {
 
 })
 export class TextesLegauxComponent {
- 
+   openedArticleIndex: number | null = null;
+  constructor(private cdr: ChangeDetectorRef) {}
+  openStates: boolean[] = [];
+  toggleArticle(index: number): void {
+    this.openedArticleIndex = this.openedArticleIndex === index ? null : index;
+  }
+
+  isOpen(index: number): boolean {
+    return this.openedArticleIndex === index;
+  }
+  loadArticleContent(index: number): void {
+
+    this.articles[index].content 
+    this.cdr.detectChanges();
+    }
+
+  trackByIndex(index: number): number {
+    return index;
+  }
 
   articles: Article[] = [
     { 
@@ -88,23 +106,5 @@ export class TextesLegauxComponent {
     }
   ];
 
-  openedArticleIndex: number | null = null;
-  constructor(private cdr: ChangeDetectorRef) {}
 
-  toggleArticle(index: number): void {
-    requestAnimationFrame(() => {
-      this.openedArticleIndex = this.openedArticleIndex === index ? null : index;
-      this.cdr.markForCheck();
-    });
-  }
-
-  loadArticleContent(index: number): void {
-
-    this.articles[index].content 
-    this.cdr.detectChanges();
-    }
-
-  trackByIndex(index: number): number {
-    return index;
-  }
 }

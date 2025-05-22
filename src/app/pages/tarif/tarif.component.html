@@ -1,0 +1,35 @@
+<div class="tarif-modal-backdrop" *ngIf="isVisible">
+  <div class="tarif-modal">
+    <button class="close-button" (click)="closeModal()">×</button>
+
+    <div class="modal-header">
+      <h2>Notre politique tarifaire transparente</h2>
+    </div>
+
+    <div class="modal-scroll">
+      <div class="modal-body">
+        <p>Lorsque vous nous confiez votre dossier, le cabinet MDrecouvrement vous demandera des frais forfaitaires initiaux de 15 € HT afin de couvrir les frais fixes de base (un appel, un SMS, un mail, une lettre simple et une lettre RAR).</p>
+
+        <h3>Recouvrement amiable :</h3>
+        <ul>
+          <li>10 % des sommes encaissées pour les créances de moins de 6 mois</li>
+          <li>15 % pour les créances de plus de 6 mois</li>
+          <li>Reversement sous 48h</li>
+        </ul>
+
+        <h3>Recouvrement contentieux :</h3>
+        <ul>
+          <li>Frais de dossier : 15 € HT (sauf si dossier déjà ouvert en amiable)</li>
+          <li>Frais de gestion contentieux : 150 € HT</li>
+          <li>10 % ou 15 % des sommes encaissées selon l'ancienneté</li>
+        </ul>
+
+        <h3>Passage au domicile :</h3>
+        <ul>
+          <li>Forfait 50 € HT par passage</li>
+          <li>Frais kilométriques à prévoir à l’avance (itinéraire fourni par notre cabinet)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
